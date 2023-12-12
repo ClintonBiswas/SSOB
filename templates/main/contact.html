@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center" style="height: 130px; background-color: #F4C431;">
+    <h2 style="margin: 0; font-weight: bolder; letter-spacing: 2px;">Contact Us</h2>
+    <p style="margin-top: 10px;">Feel free to contact us.</p>
+</div>
+    <div class="container" style="background-color: #f8f9fa;">
+        <div class="row">
+            <div class="col-sm-5 d-flex justify-content-center align-items-center">
+                <img src="{% static 'images/contact1.png' %}" alt="" class="animated-image img-fluid">
+            </div>
+            
+            <div class="col-sm-7">
+                
+                <form method="POST" class="p-5">
+                    {% if messages %}
+                    
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    
+                    {% endif %}
+                    {{form|crispy}}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning" style="width: 100%; max-width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,34 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+      <a class="navbar-brand" href="#">
+          <!-- Your logo goes here -->
+          <img style="border-radius: 15px;" src="{% static 'images/shiva.jpg' %}" alt="Logo" height="60" width="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="{% url 'main:home' %}">Home</a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="{% url 'main:about' %}">About Us</a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="{% url 'main:event' %}">Events</a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="{% url 'main:media' %}">Media & Library</a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" aria-current="page" href="{% url 'main:contact' %}">Contact Us</a>
+              </li>
+          </ul>
+          <div class="d-flex mx-2">
+              <a href="{% url 'main:donate' %}" class="btn btn-outline-success text-decoration-none" type="submit">Donation</a>
+          </div>
+      </div>
+  </div>
+</nav>

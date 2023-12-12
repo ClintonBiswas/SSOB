@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Photo Details
+{% endblock title %}
+
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center" style="height: 130px; background-color: #F4C431;">
+    <h2 style="margin: 0; font-weight: bolder; letter-spacing: 2px;">{{name}} update photos</h2>
+</div>
+<div class="container my-3">
+    <div class="row">  
+        {% for photo in photos %}  
+        <div class="col-sm-3">
+            <img class="mb-3 shadow-sm" style="border-radius: 15px;" src={{photo.photos.url}} alt="" width="100%" max-width="100%" height="300px">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+    

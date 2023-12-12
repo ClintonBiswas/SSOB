@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+    Event Details
+{% endblock title %}
+
+
+{% block content %}
+        <div class="d-flex justify-content-center align-items-center" style="height: 130px; background-color: #F4C431;">
+            <h2 style="margin: 0; font-weight: bolder; letter-spacing: 2px;">{{events.event_name}}({{events.year}})</h2>
+        </div>
+        <div class="container my-3">
+            <div class="card mb-3" style="border: none;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src={{events.images.url}} class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{events.event_name}}</h5>
+                      <p class="card-text">Start Date: <small class="text-muted">{{events.event_date}}</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="mt-2">
+                <h3>Introduction:</h3>
+                <small style="font-weight: 300; font-size: 1rem;">{{events.introduction|linebreaks}}</small>
+                <h3>Schedule:</h3>
+                <small style="font-weight: 300; font-size: 1rem;">
+                {% if events.schedule %}
+                {{events.schedule|linebreaks}}
+                {% else %}
+                <p>We will provide you with further updates at a later time.</p> <br>
+                {% endif %}
+              </small>
+                <h3>Donation:</h3>
+                <small style="font-weight: 300; font-size: 1rem;">{{events.donation|linebreaks}}</small>
+                <h3>Culture Program:</h3>
+                <small style="font-weight: 300; font-size: 1rem;">{{events.culture_program|linebreaks}}</small>
+              </div>
+        </div>
+{% endblock content %}
+    

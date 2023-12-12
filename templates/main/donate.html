@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Donation
+{% endblock title %}
+
+
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center" style="height: 130px; background-color: #F4C431;">
+    <h2 style="margin: 0; font-weight: bolder; letter-spacing: 2px;">Membership Donation</h2>
+</div>
+<div class="container my-5">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h2 style="margin: 0; font-weight: bolder; letter-spacing: 2px;">Donate Now</h2>
+        <p style="margin-top: 15px; font-size: 1.2rem; font-weight: 700; text-align: center;">Payment through the website requires 2.7% additional processing fee. To avoid the processing fee, send membership or concert donations using Zelle at bcaaaz.finance@gmail.com</p>
+    </div>
+    <div class="mt-3">
+        <div class="row">
+            
+            {% for donate in donates %}
+                <div class="col-sm-3">
+                    <div class="card-container position-relative mb-3">
+                        <img src={{donate.image.url}} class="img-fluid" alt="Card Image" height="300px" width="100%" max-width="100%">
+                        <div class="overlay">
+                          <div style="font-size: 1rem;">{{donate.name}}&nbsp;$({{donate.price_range}})</div><br>
+                          <a href="#" class="btn btn-primary card-button">Donate</a>
+                        </div>
+                      </div>
+                </div>
+            {% endfor %}
+                
+        </div>
+        
+    </div>
+</div>
+    
+{% endblock content %}
+    
