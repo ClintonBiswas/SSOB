@@ -8,23 +8,8 @@ from django.conf import settings
 import threading
 # Create your views here.
 
-class EmailThread(threading.Thread):
-    def __init__(self, subject, message, from_email, to_email):
-        self.subject = subject
-        self.message = message
-        self.from_email = from_email
-        self.to_email = to_email
-        threading.Thread.__init__(self)
-
-    def run(self):
-        send_mail(
-            self.subject,
-            self.message,
-            self.from_email,
-            self.to_email,
-            fail_silently=True,
-        )
-        print('Email sent successfully')
+def send_email_thread(subject, message, from_email, to_email):
+    send_mail(subject, message, from_email, to_email, fail_silently=True)
 
 def Home(request):
     banners = Banner.objects.all()
@@ -62,13 +47,17 @@ def ContactView(request):
 
             subject = 'You received a new message from SSOB'
             message = f'Hi {client_message}'
-            from_email = settings.EMAIL_HOST_USER
+            from_email = settings.DEFAULT_FROM_EMAIL
             to_email = [form.cleaned_data.get('email')]
 
             # Start a new thread to send the email
-            thread = EmailThread(subject, message, from_email, to_email)
+            thread = threading.Thread(
+             target=send_email_thread,
+             args=(subject, message, from_email, to_email),
+            )
+            # jay.ns.cloudflare.com
+            # ruth.ns.cloudflare.com
             thread.start()
-
             return redirect('main:contact')
 
     context = {'form': form}

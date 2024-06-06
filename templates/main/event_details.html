@@ -24,20 +24,7 @@
               </div>
               <hr>
               <div class="mt-2">
-                <h3>Introduction:</h3>
-                <small style="font-weight: 300; font-size: 1rem;">{{events.introduction|linebreaks}}</small>
-                <h3>Schedule:</h3>
-                <small style="font-weight: 300; font-size: 1rem;">
-                {% if events.schedule %}
-                {{events.schedule|linebreaks}}
-                {% else %}
-                <p>We will provide you with further updates at a later time.</p> <br>
-                {% endif %}
-              </small>
-                <h3>Donation:</h3>
-                <small style="font-weight: 300; font-size: 1rem;">{{events.donation|linebreaks}}</small>
-                <h3>Culture Program:</h3>
-                <small style="font-weight: 300; font-size: 1rem;">{{events.culture_program|linebreaks}}</small>
+                <p class='mb-3'>{{ events.body|safe|linebreaks }}</p>
               </div>
         </div>
 {% endblock content %}

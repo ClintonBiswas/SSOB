@@ -24,7 +24,7 @@
                     <img src={{event.images.url}} class="card-img-top" alt="..." height="350">
                     <div class="card-body">
                       <h5 class="card-title">{{event.event_name}}</h5>
-                      <p class="card-text">{{event.introduction|slice:":150"}}&nbsp;...</p>
+                      <p class="card-text">{{event.body|striptags|truncatechars:100 }}</p>
                       <hr>
                       <a href="{% url 'main:event-details' event.slug %}" type="button" class="btn btn-outline-info align-items-center">Read More</a>
                     </div>

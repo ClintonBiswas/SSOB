@@ -1,18 +1,20 @@
-from typing import Iterable, Optional
 from django.db import models
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class EventList(models.Model):
     event_name = models.CharField(max_length=264)
-    introduction = models.TextField(blank=True, null=True)
-    schedule = models.TextField(blank=True, null= True)
-    donation = models.TextField(blank=True, null=True)
-    culture_program = models.TextField(blank=True, null=True)
+    #introduction = models.TextField(blank=True, null=True)
+    #schedule = models.TextField(blank=True, null= True)
+    #donation = models.TextField(blank=True, null=True)
+    #culture_program = models.TextField(blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
     images = models.ImageField(upload_to='event_images')
     event_date = models.CharField(max_length=50, blank=True)
     year = models.CharField(max_length=50, blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -21,6 +23,8 @@ class EventList(models.Model):
     
     def __str__(self) -> str:
         return self.event_name
+    class Meta:
+        ordering = ['-created']
 
 class Banner(models.Model):
     image = models.ImageField(upload_to='banner')
